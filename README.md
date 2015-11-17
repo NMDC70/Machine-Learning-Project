@@ -1,8 +1,8 @@
-# Machine-Learning-Project
-Coursera Project _ Machine Learning 
+# Machine Learning Project
+Coursera Project Machine Learning 
 ---
-title: "Description - Machine Learning Project"
-author: "Nagesh Madhwal"
+title: "Machine Learning Project"
+author: "NMDC"
 date: "November 17, 2015"
 output: html_document
 ---
