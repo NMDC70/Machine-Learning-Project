@@ -1,17 +1,20 @@
+---
+output: html_document
+---
 # Machine Learning Project
 Coursera Project Machine Learning 
 ---
 title: "Machine Learning Project"
 author: "NMDC"
 date: "November 17, 2015"
-output: html_document
+
 ---
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r eval=FALSE}
+
 projtrain <- read.csv("pml-training.csv")
 projtrain2 <- projtrain
 projtrain2[projtrain2 == "#DIV/0!" | projtrain2 == ""] <- NA
@@ -35,6 +38,10 @@ registerDoParallel(4)
 ##importance <- varImp(output, scale=FALSE)
 ##print(importance)
 ##plot(importance)
+```
+
+
+```{r eval=FALSE}
 set.seed(1001)
 modelrf <- train(classe ~ ., data = mytrain, trControl = trainControl(method = "cv", number = 10))
 importance <- varImp(output, scale=FALSE)
@@ -46,8 +53,10 @@ predrf <- predict(modelrf, newdata = mytest)
 compmytest <- mytest
 compmytest$predright <- predrf == compmytest$classe
 sum(compmytest$predright)/ nrow(compmytest)
+```
 
 
+```{r eval=FALSE}
 ## for future research
 ##control <- trainControl(method="repeatedcv", number=10, repeats=3)
 ##model <- train(diabetes~., data=PimaIndiansDiabetes, method="lvq", preProcess="scale", trControl=control)
@@ -56,6 +65,10 @@ sum(compmytest$predright)/ nrow(compmytest)
 control <- rfeControl(functions=rfFuncs, method="cv", number=10)
 results <- rfe(filteredDescr[,1:37], filteredDescr[,38], sizes=c(1:37), rfeControl=control)
 plot(results, type=c("g", "o"))
+```
+
+
+```{r eval=FALSE}
 set.seed(1001)
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 modellvq1 <- train(classe ~ ., data = mytrain, method="lvq", trControl=control, tuneLength= 5)
@@ -63,7 +76,10 @@ predlvq1 <- predict(modellvq1, newdata = mytest)
 compmytestlvq <- mytest
 compmytestlvq$predright <- predlvq1 == compmytestlvq$classe
 sum(compmytestlvq$predright)/ nrow(compmytestlvq)
+```
 
+
+```{r eval=FALSE}
 ## with Preprocess
 set.seed(1001)
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
@@ -74,6 +90,10 @@ compmytestlvq2$predright <- predlvq2 == compmytestlvq2$classe
 sum(compmytestlvq2$predright)/ nrow(compmytestlvq2)
 
 ## LVQ is not the right approach for this data set
+```
+
+
+```{r eval=FALSE}
 set.seed(1001)
 
 fitControl <- trainControl(method = "repeatedcv", number = 10, repeats = 10)
