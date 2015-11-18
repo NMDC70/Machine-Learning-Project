@@ -1,6 +1,5 @@
 ---
-# Machine Learning 
-Coursera Project  
+output: html_document
 ---
 
 ---
@@ -117,10 +116,9 @@ fitControl <- trainControl(method = "repeatedcv", number = 10, repeats = 10)
 modelgbm <- train(classe ~., data = mytrain, methos = "gbm", trControl = fitControl, verbose = FALSE)
 ```
 
-You can also embed plots, for example:
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval = FALSE}
 plot(cars)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
